@@ -1,14 +1,12 @@
 package com.yxc.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.yxc.common.ErrorCodeAndMsg;
-import com.yxc.common.Result;
-import com.yxc.common.SbpRuntimeException;
+import com.yxc.common.controller.ErrorCodeAndMsg;
+import com.yxc.common.controller.Result;
+import com.yxc.common.controller.SbpRuntimeException;
 import com.yxc.pojo.User;
 import com.yxc.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

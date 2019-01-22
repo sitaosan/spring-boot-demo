@@ -1,4 +1,4 @@
-package com.yxc.common;
+package com.yxc.common.controller;
 
 public class SbpRuntimeException extends RuntimeException {
 
@@ -7,7 +7,7 @@ public class SbpRuntimeException extends RuntimeException {
     public SbpRuntimeException(ErrorCodeAndMsg response) {
         this.response = response;
     }
-    public SbpRuntimeException(ErrorCodeAndMsg response,String msg) {
+    public SbpRuntimeException(ErrorCodeAndMsg response, String msg) {
         response.setMsg(msg);
         this.response = response;
     }
