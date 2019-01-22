@@ -1,5 +1,6 @@
 package com.yxc.service.impl;
 
+import com.yxc.common.redis.RedisUtil;
 import com.yxc.dao.UserMapper;
 import com.yxc.pojo.User;
 import com.yxc.service.UserService;
@@ -12,9 +13,19 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    RedisUtil redis;
+
     @Override
     public List<User> getUsers() {
-        return userMapper.getUsers();
+        List<User> users = null;
+        //先去redis里查找
+        users = (List<User>) redis.get("userList");
+        if(users==null){
+            users =userMapper.getUsers();
+            redis.set("userList",users);
+        }
+        return users;
     }
 
     @Override
@@ -23,6 +34,7 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public User getUserByName(String userName){
+
          return userMapper.getUserByName(userName);
     }
 }

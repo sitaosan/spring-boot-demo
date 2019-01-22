@@ -1,5 +1,6 @@
 package com.yxc.pojo;
 
+import com.alibaba.fastjson.JSON;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,4 +19,8 @@ public class User implements Serializable {
                 ", userAddress='" + userAddress + '\'' +
                 '}';
     }
+    public String toJson() {
+        return JSON.toJSONString(this);
+    }
+
 }
