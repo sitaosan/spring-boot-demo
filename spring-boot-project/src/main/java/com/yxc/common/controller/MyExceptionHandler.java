@@ -1,4 +1,4 @@
-package com.yxc.common;
+package com.yxc.common.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -28,7 +28,7 @@ public class MyExceptionHandler {
     public Result handleException(HttpServletRequest request, Exception ex) {
         Result response;
         log.error("exception error:{}",ex);
-        response = new Result(ErrorCodeAndMsg.SYSTEM_ERROR.getCode(),ErrorCodeAndMsg.SYSTEM_ERROR.getMsg());
+        response = new Result(ErrorCodeAndMsg.SYSTEM_ERROR.getCode(), ErrorCodeAndMsg.SYSTEM_ERROR.getMsg());
         return response;
     }
 }
