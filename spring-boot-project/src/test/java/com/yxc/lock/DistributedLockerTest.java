@@ -20,7 +20,6 @@ public class DistributedLockerTest {
     public void LockTest(){
         for (int i = 0; i < 50; i++) {
             Runnable runnable = new Runnable(){
-
                 @Override
                 public void run() {
                     seckill();
