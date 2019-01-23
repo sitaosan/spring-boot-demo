@@ -1,5 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="org.springframework.web" level="DEBUG"/>
+<!--
+configuration:三个属性
+ scan：当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
+ scanPeriod：设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，
+            此属性生效。默认的时间间隔为1分钟。比如：60 seconds
+ debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
+-->
+<configuration scan="true">
+    <!-- 定义日志文件名称,与工程名一致 -->
+    <property name="APP" value="spring-boot-project" />
+    <!-- 定义日志的根目录 -->
+    <property name="LOG_HOME" value="logs" />
+    <!-- 控制台输出设置 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yy-MM-dd.HH:mm:ss.SSS} [%-16t] %-5p %-22c{0} %X{ServiceId} - %m%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 正常文件输出设置 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/${APP}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/${APP}/${APP}-%d{yyyy-MM-dd}-%i.zip
+            </FileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>365</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 异常文件输出设置，将异常堆栈另外保存一份到单独的文件中，方便查找
+
+       additivity:为false，则子Logger只会在自己的appender里输出，而不会在父Logger的appender里输出。
+       默认情况下子Logger会继承父Logger的appender，也就是说子Logger会在父Logger的appender里输出。
+    -->
+    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/error/${APP}.error.log</File>
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/${APP}/${APP}.error-%d{yyyy-MM-dd}-%i.zip
+            </FileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>365</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} -
+                %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印错误日志 -->
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印警告日志 -->
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!--定义日志的输出级别，info级别的，控制台，正常和异常都写日志-->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="FILE_ERROR" />
+    </root>
+
+    <!--定义具体类的日志级别-->
+    <!-- Spring framework logger -->
+    <!--<logger name="org.springframework" level="info"></logger>-->
+    <!-- com.ceiec -->
+    <!--<logger name="com.ceiec" level="info"></logger>-->
+  <!--  <logger name="dao" level="debug"/>-->
+
+    <!--默认配置，只写这两行日志就生效-->
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="DEBUG"/>-->
 </configuration>
