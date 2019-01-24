@@ -1,9 +1,12 @@
 package com.yxc.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.yxc.common.controller.ErrorCodeAndMsg;
-import com.yxc.common.controller.Result;
-import com.yxc.common.controller.SbpRuntimeException;
+import com.yxc.common.dto.UserDto;
+import com.yxc.common.handler.ErrorCodeAndMsg;
+import com.yxc.common.handler.PageReult;
+import com.yxc.common.handler.Result;
+import com.yxc.common.handler.SbpRuntimeException;
+import com.yxc.common.vo.UserVo;
 import com.yxc.pojo.User;
 import com.yxc.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,13 +23,16 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "getUser",method = RequestMethod.GET)
-    public Result getUsers(){
+    @RequestMapping(value = "getUser",method = RequestMethod.POST)
+    public Result<PageReult<User>> getUsers(@RequestBody UserVo userVo){
         try{
             log.info("==getUsers==");
-            List<User> users = userService.getUsers();
+            List<User> users = userService.getUsers(userVo);
             if(users!=null){
-                return new Result(users);
+                Result<PageReult<User>> result = new Result<PageReult<User>>();
+                int totalCount = userService.getUserCount(userVo);
+                PageReult pageReult = new PageReult(userVo.getPageSize(),userVo.getPageNum(),totalCount,users);
+                return new Result(pageReult);
             }else{
                 throw new SbpRuntimeException(ErrorCodeAndMsg.DATA_NULL);
             }
@@ -41,9 +47,9 @@ public class UserController {
     }
 
     @RequestMapping(value="addUuser",method = RequestMethod.POST)
-    public Result addUser(@RequestBody User user){
-        log.info("==addUser==,user:{}", JSON.toJSON(user));
-        int num = userService.addUser(user);
+    public Result addUser(@RequestBody UserVo userVo){
+        log.info("==addUser==,user:{}", JSON.toJSON(userVo));
+        int num = userService.addUser(userVo);
         if(num!=1){
             throw new SbpRuntimeException(ErrorCodeAndMsg.ADD_ERROR_CODE);
         }else{
