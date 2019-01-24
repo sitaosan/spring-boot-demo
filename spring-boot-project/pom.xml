@@ -22,6 +22,7 @@
         <redisson-version>3.5.0</redisson-version>
         <commons-lang3-version>3.1</commons-lang3-version>
         <commons-logging-version>1.1.1</commons-logging-version>
+        <esotericsoftware-version>1.11.0</esotericsoftware-version>
     </properties>
 
     <dependencies>
@@ -121,6 +122,11 @@
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>${commons-logging-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
         </dependency>
     </dependencies>
 

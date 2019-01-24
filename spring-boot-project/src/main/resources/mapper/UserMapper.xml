@@ -14,17 +14,57 @@
     <sql id="Base_Column_List" >
         id,user_name,user_address
     </sql>
-    <select id="getUsers"  resultMap="BaseResultMap">
+    <!--分页前缀-->
+    <sql id="paginationPrefix">
+        SELECT * FROM (
+    </sql>
+    <!--分页后缀-->
+    <sql id="paginationSuffix">
+        )A LIMIT
+		#{startIdx},#{pageSize}
+    </sql>
+
+
+    <select id="getUsers"  parameterType="com.yxc.common.dto.UserDto" resultMap="BaseResultMap">
+        <include refid="paginationPrefix"/>
         select <include refid="Base_Column_List"/>
          from t_user
+         where 1=1
+        <if test="userId != null ">
+            AND id =  #{userId,jdbcType=BIGINT}
+        </if>
+        <if test="userName != null and userName!='' ">
+            AND user_name like '%${userName}%'
+        </if>
+        <if test="userAddress != null and userAddress!='' ">
+            AND user_address like '%${userAddress}%'
+        </if>
+        <include refid="paginationSuffix"/>
     </select>
+
+    <select id="getUserCount" parameterType="com.yxc.common.dto.UserDto" resultType="int">
+        SELECT count(1)  FROM  t_user
+        WHERE 1=1
+        <if test="userId != null">
+            AND id =  #{userId,jdbcType=BIGINT}
+        </if>
+        <if test="userName != null and userName!='' ">
+            AND user_name like '%${userName}%'
+        </if>
+        <if test="userAddress != null and userAddress!='' ">
+            AND user_address like '%${userAddress}%'
+        </if>
+    </select>
+
     <insert id="insertUser" parameterType="com.yxc.pojo.User">
         insert into t_user(user_name,user_address) values(#{userName,jdbcType=VARCHAR},#{userAddress,jdbcType=VARCHAR})
     </insert>
 
     <select id="getUserByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <include refid="paginationPrefix"/>
         select <include refid="Base_Column_List"/>
         from t_user
         where user_name like '%${userName}%'
+        <include refid="paginationSuffix"/>
     </select>
 </mapper>

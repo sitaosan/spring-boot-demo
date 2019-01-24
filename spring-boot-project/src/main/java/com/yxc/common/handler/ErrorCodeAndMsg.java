@@ -1,4 +1,4 @@
-package com.yxc.common.controller;
+package com.yxc.common.handler;
 
 
 public enum ErrorCodeAndMsg {
