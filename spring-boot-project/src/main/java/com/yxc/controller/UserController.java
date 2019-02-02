@@ -32,6 +32,7 @@ public class UserController {
                 Result<PageReult<User>> result = new Result<PageReult<User>>();
                 int totalCount = userService.getUserCount(userVo);
                 PageReult pageReult = new PageReult(userVo.getPageSize(),userVo.getPageNum(),totalCount,users);
+                log.info("==pageReult Json==:{}",pageReult.toJson());
                 return new Result(pageReult);
             }else{
                 throw new SbpRuntimeException(ErrorCodeAndMsg.DATA_NULL);

@@ -1,5 +1,6 @@
 package com.yxc.common.handler;
 
+import com.alibaba.fastjson.JSON;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -67,5 +68,8 @@ public class PageReult<P> implements Serializable {
                 ", pageCount=" + pageCount +
                 ", datas=" + datas +
                 '}';
+    }
+    public String toJson(){
+        return JSON.toJSONString(this);
     }
 }
