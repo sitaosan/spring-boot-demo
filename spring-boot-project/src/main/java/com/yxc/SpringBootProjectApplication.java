@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Service;
 
 @ComponentScan(basePackages={"com.yxc.*"}) // 扫描该包路径下的所有spring组件
 @SpringBootApplication
@@ -23,7 +22,7 @@ public class SpringBootProjectApplication {
         log.info("=========项目启动开始=========");
         SpringApplication.run(SpringBootProjectApplication.class, args);
         long endTime = System.currentTimeMillis();
-        log.info("=========项目启动完毕共耗时："+((endTime-beginTime)/1000)+"秒");
+        log.info("=========项目启动完毕共耗时:{}",((endTime-beginTime)/1000)+"秒");
     }
 
 }
