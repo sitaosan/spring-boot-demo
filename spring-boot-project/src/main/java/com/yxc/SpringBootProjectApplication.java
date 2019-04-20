@@ -24,6 +24,5 @@ public class SpringBootProjectApplication {
         long endTime = System.currentTimeMillis();
         log.info("=========项目启动完毕共耗时:{}",((endTime-beginTime)/1000)+"秒");
     }
-
 }
 
