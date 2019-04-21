@@ -8,3 +8,4 @@ springboot的示例，json数据格式，springboot+mybatis+redis
 # springCloud
 1. 新建项目
 2. EurekaServer的配置
+3. EurekaClient的新建
