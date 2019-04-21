@@ -1,0 +1,44 @@
+2019-04-20 14:36:37.888 [main] INFO  com.yxc.SpringBootProjectApplication - =========项目启动开始=========
+2019-04-20 14:36:38.891 [restartedMain] INFO  com.yxc.SpringBootProjectApplication - =========项目启动开始=========
+2019-04-20 14:36:40.816 [restartedMain] INFO  com.yxc.SpringBootProjectApplication - Starting SpringBootProjectApplication on DESKTOP-8NTV36D with PID 14944 (C:\work\spring-boot-demo\spring-boot-project\target\classes started by yangx in C:\work\spring-boot-demo\spring-boot-project)
+2019-04-20 14:36:40.830 [restartedMain] INFO  com.yxc.SpringBootProjectApplication - No active profile set, falling back to default profiles: default
+2019-04-20 14:36:41.052 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-04-20 14:36:41.052 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-04-20 14:36:44.242 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-04-20 14:36:44.261 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-04-20 14:36:44.405 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 90ms. Found 0 repository interfaces.
+2019-04-20 14:36:45.210 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$4b9c6baf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-20 14:36:45.361 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8530ad81] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-20 14:36:47.638 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8084 (http)
+2019-04-20 14:36:47.672 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8084"]
+2019-04-20 14:36:47.694 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-04-20 14:36:47.695 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-04-20 14:36:47.727 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\sorft\Java\jdk\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\sorft\Java\jdkbin;C:\sorft\apache-maven-3.5.2bin;C:\sorft\Java\jdk\jre\bin;C:\sorft\Git\cmd;C:\sorft\TortoiseSVN\bin;C:\sorft\gradle-5.3.1\bin;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5.2 & MySQL Utilities 1.5.2 1.5\;C:\Program Files (x86)\MySQL\MySQL Fabric 1.5.2 & MySQL Utilities 1.5.2 1.5\Doctrine extensions for PHP\;C:\Users\yangx\AppData\Local\Microsoft\WindowsApps;.]
+2019-04-20 14:36:49.026 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/yxcproject] - Initializing Spring embedded WebApplicationContext
+2019-04-20 14:36:49.027 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 7974 ms
+2019-04-20 14:36:49.345 [restartedMain] INFO  com.yxc.common.lock.RedisSessionConfig - =====================redissonSingle==============================
+2019-04-20 14:36:49.345 [restartedMain] INFO  com.yxc.common.lock.RedisSessionConfig - =====================timeout:3000
+2019-04-20 14:36:49.346 [restartedMain] INFO  com.yxc.common.lock.RedisSessionConfig - =====================pingTimeout:30000
+2019-04-20 14:36:49.346 [restartedMain] INFO  com.yxc.common.lock.RedisSessionConfig - =====================connectionPoolSize:64
+2019-04-20 14:36:49.346 [restartedMain] INFO  com.yxc.common.lock.RedisSessionConfig - =====================idleConnectionTimeout:10000
+2019-04-20 14:36:49.347 [restartedMain] INFO  com.yxc.common.lock.RedisSessionConfig - =====================connectTimeout:30000
+2019-04-20 14:36:49.347 [restartedMain] INFO  com.yxc.common.lock.RedisSessionConfig - =====================reconnectionTimeout:30000
+2019-04-20 14:36:49.348 [restartedMain] INFO  com.yxc.common.lock.RedisSessionConfig - =====================connectionMinimumIdleSize:10
+2019-04-20 14:36:50.648 [restartedMain] INFO  org.redisson.Version - Redisson 3.5.0
+2019-04-20 14:36:52.005 [redisson-netty-1-3] INFO  o.r.connection.pool.MasterPubSubConnectionPool - 1 connections initialized for /127.0.0.1:6379
+2019-04-20 14:36:52.005 [redisson-netty-1-7] INFO  org.redisson.connection.pool.MasterConnectionPool - 10 connections initialized for /127.0.0.1:6379
+2019-04-20 14:36:52.185 [restartedMain] INFO  com.yxc.common.redis.RedisConfig - Create JedisConnectionFactory successful
+2019-04-20 14:36:52.417 [restartedMain] INFO  com.yxc.common.utils.SpringBeanUtil - ========ApplicationContext配置成功,applicationContext=:org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2626c90d, started on Sat Apr 20 14:36:41 CST 2019
+2019-04-20 14:36:52.897 [restartedMain] INFO  com.yxc.common.redis.RedisConfig - JedisPool init successful，host -> [127.0.0.1]；port -> [5672]
+2019-04-20 14:36:52.928 [restartedMain] INFO  com.yxc.common.redis.RedisConfig - 初始化CacheManager -> [CacheManager RedisCacheManager Start]
+2019-04-20 14:36:52.944 [restartedMain] INFO  com.yxc.common.redis.RedisConfig - 初始化 -> [Redis CacheErrorHandler]
+2019-04-20 14:36:52.944 [restartedMain] INFO  com.yxc.common.utils.SpringBeanUtil - ========ApplicationContext配置成功,applicationContext=:org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2626c90d, started on Sat Apr 20 14:36:41 CST 2019
+2019-04-20 14:36:53.281 [restartedMain] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-20 14:36:54.134 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-04-20 14:36:54.266 [restartedMain] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [127.0.0.1]
+2019-04-20 14:36:54.366 [restartedMain] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Created new connection: connectionFactory#1dda8e3a:0/SimpleConnection@793cb931 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 53206]
+2019-04-20 14:36:54.516 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8084"]
+2019-04-20 14:36:54.521 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2019-04-20 14:36:54.547 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8084 (http) with context path '/yxcproject'
+2019-04-20 14:36:54.552 [restartedMain] INFO  com.yxc.SpringBootProjectApplication - Started SpringBootProjectApplication in 15.618 seconds (JVM running for 20.749)
+2019-04-20 14:36:54.560 [restartedMain] INFO  com.yxc.SpringBootProjectApplication - =========项目启动完毕共耗时:15秒
