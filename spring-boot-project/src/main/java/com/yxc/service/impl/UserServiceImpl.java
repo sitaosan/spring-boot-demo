@@ -6,7 +6,9 @@ import com.yxc.common.vo.UserVo;
 import com.yxc.dao.UserMapper;
 import com.yxc.pojo.User;
 import com.yxc.service.UserService;
+import com.yxc.service.UserTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,9 +19,11 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
     @Autowired
     RedisUtil redis;
+    @Autowired
+    UserTaskService userTaskService;
 
     @Override
-    public List<User> getUsers(UserVo userVo) {
+    public List<User> getUsers(UserVo userVo){
         List<User> users = null;
 //        //先去redis里查找
 //        users = (List<User>) redis.get("userList");
@@ -40,12 +44,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByName(String userName){
 
-         return userMapper.getUserByName(userName);
+        return userMapper.getUserByName(userName);
     }
     @Override
     public int getUserCount(UserVo userVo){
-          UserDto userDto =  voToDto(userVo);
-          return userMapper.getUserCount(userDto);
+        UserDto userDto =  voToDto(userVo);
+        return userMapper.getUserCount(userDto);
     }
     private UserDto voToDto(UserVo userVo){
         UserDto userDto = new UserDto();

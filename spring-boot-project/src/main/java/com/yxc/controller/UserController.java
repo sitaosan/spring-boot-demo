@@ -8,7 +8,9 @@ import com.yxc.common.handler.Result;
 import com.yxc.common.handler.SbpRuntimeException;
 import com.yxc.common.vo.UserVo;
 import com.yxc.pojo.User;
+import com.yxc.pojo.UserTask;
 import com.yxc.service.UserService;
+import com.yxc.service.UserTaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,17 +24,23 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    UserTaskService userTaskServce;
 
     @RequestMapping(value = "getUser",method = RequestMethod.POST)
-    public Result<PageReult<User>> getUsers(@RequestBody UserVo userVo){
+    public Result<PageReult<User>> getUsers(@RequestBody UserVo userVo) throws InterruptedException {
         try{
             log.info("==getUsers==");
             List<User> users = userService.getUsers(userVo);
             if(users!=null){
                 Result<PageReult<User>> result = new Result<PageReult<User>>();
+
                 int totalCount = userService.getUserCount(userVo);
                 PageReult pageReult = new PageReult(userVo.getPageSize(),userVo.getPageNum(),totalCount,users);
                 log.info("==pageReult Json==:{}",pageReult.toJson());
+                UserTask userTask = new UserTask();
+                userTask.setContent("测试task");
+                userTaskServce.addUserTask(userTask);
                 return new Result(pageReult);
             }else{
                 throw new SbpRuntimeException(ErrorCodeAndMsg.DATA_NULL);

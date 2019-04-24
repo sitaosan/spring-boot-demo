@@ -1,6 +1,5 @@
 package com.yxc.service;
 
-import com.yxc.common.dto.UserDto;
 import com.yxc.common.vo.UserVo;
 import com.yxc.pojo.User;
 

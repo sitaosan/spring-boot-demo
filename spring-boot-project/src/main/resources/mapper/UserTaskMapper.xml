@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper标签要指定namespace属性，不然会报错，可看做包名-->
+<mapper namespace="com.yxc.dao.UserTaskMapper">
+
+    <resultMap id="BaseResultMap" type="com.yxc.pojo.UserTask" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id,user_id,content
+    </sql>
+
+    <insert id="insertUserTask" parameterType="com.yxc.pojo.UserTask">
+        insert into t_user_task(user_id,content) values(#{userId,jdbcType=BIGINT},#{content,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>
